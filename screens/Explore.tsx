@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, ScrollView  } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity  } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 interface Item {
   title: string;
@@ -13,11 +14,13 @@ const Explore = () => {
   const [movies, setMovies] = useState<Item[]>([]);
   const [shows, setShows] = useState<Item[]>([]);
 
+  const navigation = useNavigation();
+
   useEffect(() => {
-    getMovies();
+    getData();
   }, []);
 
-  const getMovies = async () => {
+  const getData = async () => {
     const options = {
       method: 'GET',
       headers: {
@@ -46,6 +49,7 @@ const Explore = () => {
   const renderItems = (items:Item[]) => (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.container}>
       {items.map((item: Item, index: number) => (
+        <TouchableOpacity onPress={() => navigation.navigate('Details', {'details': item})}>
         <View key={index} style={styles.card}>
           <Text>{item.title? item.title : item.name}</Text>
           <Icon
@@ -56,8 +60,10 @@ const Explore = () => {
             containerStyle={styles.heartIcon}
           />
         </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
+    
   );
 
   return (
