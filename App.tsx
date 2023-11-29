@@ -1,11 +1,20 @@
+import 'react-native-gesture-handler';
+import React, { JSXElementConstructor } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Explore from './screens/Explore';
+import Favourite from './screens/Favourite';
 
-const App = () => {
+
+const Drawer = createDrawerNavigator();
+
+const App = (): JSX.Element => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+      <NavigationContainer>
+       <Explore />
+      </NavigationContainer>
+
   )
 }
 
