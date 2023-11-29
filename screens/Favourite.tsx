@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Explore from './Explore'
 
 const Favourite = () => {
   return (
-    <View>
-      <Text>Favourite</Text>
-    </View>
+    <Explore/>
   )
 }
 
