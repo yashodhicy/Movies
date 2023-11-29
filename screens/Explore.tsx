@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity  } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { } from 'react-native-gesture-handler';
-import { Icon } from 'react-native-elements';
+import { Icon, Image } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
 interface Item {
@@ -51,9 +51,11 @@ const Explore = () => {
       {items.map((item: Item, index: number) => (
         <TouchableOpacity onPress={() => navigation.navigate('Details', {'details': item})}>
         <View key={index} style={styles.card}>
-          <Text>{item.title? item.title : item.name}</Text>
+        <Image style={styles.poster} source={{ uri: `https://image.tmdb.org/t/p/original/${item.poster_path}` }} />
+          
           <Text style={styles.heartIcon}>❤️</Text>
         </View>
+        
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
   card: {
     width: 125,
     height: 175,
-    padding: 10,
+    overflow: 'visible',
     margin: 5,
     backgroundColor: '#D9D9D9',
   },
@@ -101,7 +103,10 @@ const styles = StyleSheet.create({
   title: {
     marginTop:30,
     fontSize: 21,
-    fontWeight: '800',
-
+    fontWeight: '800'
+  },
+  poster: {
+    height:175,
+    width:125
   }
 });

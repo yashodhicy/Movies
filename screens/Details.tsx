@@ -10,7 +10,7 @@ const Details = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{details.title ? 'Movies' : 'TV Shows'}</Text>
-      <Image source={{uri: details.poster_path}} style={styles.image} />
+      <Image source={{ uri: `https://image.tmdb.org/t/p/original/${details.poster_path}` }} style={styles.image} />
       <View>
         <Text style={styles.name}>
           {details.title ? details.title : details.name}
