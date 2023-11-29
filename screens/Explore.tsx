@@ -52,13 +52,7 @@ const Explore = () => {
         <TouchableOpacity onPress={() => navigation.navigate('Details', {'details': item})}>
         <View key={index} style={styles.card}>
           <Text>{item.title? item.title : item.name}</Text>
-          <Icon
-            name="heart"
-            type="font-awesome"
-            color="red"
-            size={20}
-            containerStyle={styles.heartIcon}
-          />
+          <Text style={styles.heartIcon}>❤️</Text>
         </View>
         </TouchableOpacity>
       ))}
@@ -81,7 +75,9 @@ export default Explore;
 
 const styles = StyleSheet.create({
   movies: {
-    marginTop: 50,
+    marginTop: 10,
+    padding:20,
+    minHeight: 500
   },
 
   container: {
@@ -103,6 +99,9 @@ const styles = StyleSheet.create({
     right: 5,
   },
   title: {
-    marginTop:30
+    marginTop:30,
+    fontSize: 21,
+    fontWeight: '800',
+
   }
 });

@@ -2,11 +2,8 @@ import 'react-native-gesture-handler';
 import React, {JSXElementConstructor} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import Explore from './screens/Explore';
 import Favourite from './screens/Favourite';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {Screen, ScreenStack} from 'react-native-screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Details from './screens/Details';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -22,12 +19,33 @@ const App = (): JSX.Element => {
           name="Tabs"
           component={() => (
             <Tab.Navigator initialRouteName="Explore">
-              <Tab.Screen name="Explore" component={Explore} />
-              <Tab.Screen name="Favourite" component={Favourite} />
+              <Tab.Screen
+                name="Explore"
+                component={Explore}
+                options={{
+                  headerTitleAlign: 'center',
+                  tabBarLabelStyle: {
+                    color: 'black', // Text color of the tab label
+                  },
+                }}
+              />
+              <Tab.Screen
+                name="Favourite"
+                component={Favourite}
+                options={{
+                  headerTitleAlign: 'center',
+                }}
+              />
             </Tab.Navigator>
           )}
         />
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{
+            headerTitleAlign: 'center',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
